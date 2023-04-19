@@ -9,7 +9,8 @@
     "test": "jest --passWithNoTests",
     "test:dev": "jest --watchAll",
     "test:coverage": "jest --watchAll=false --collect-coverage --passWithNoTests",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -18,7 +19,6 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
-    "@react-native-community/eslint-config": "^1.1.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
     "@types/react-test-renderer": "^16.9.2",
@@ -32,10 +32,12 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-native": "^4.0.0",
     "jest": "^25.1.0",
+    "lint-staged": "^13.2.1",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.8.7",
     "react-test-renderer": "16.13.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "husky": "^8.0.0"
   },
   "resolutions": {
     "@types/react": "^16"
