@@ -9,7 +9,8 @@
     "test": "jest --passWithNoTests",
     "test:dev": "jest --watchAll",
     "test:coverage": "jest --watchAll=false --collect-coverage --passWithNoTests",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -35,7 +36,8 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.8.7",
     "react-test-renderer": "16.13.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "husky": "^8.0.0"
   },
   "resolutions": {
     "@types/react": "^16"
