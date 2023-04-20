@@ -1,5 +1,5 @@
-import {type PayloadAction, createSlice} from "@reduxjs/toolkit";
-import {type User, type UserState} from "./types";
+import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { type User, type UserState } from "./types";
 
 const initialUserState: UserState = {
   email: "",
@@ -19,7 +19,7 @@ const userSlice = createSlice({
       surname: action.payload.surname,
       isLogged: true,
     }),
-    logoutUser: (): UserState => ({...initialUserState}),
+    logoutUser: (): UserState => ({ ...initialUserState }),
   },
 });
 
