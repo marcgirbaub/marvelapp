@@ -3,7 +3,7 @@ export interface UserCredentials {
   password: string;
 }
 
-export interface LoginResponse extends UserCredentials {
+export interface UserInfo extends UserCredentials {
   name: string;
   surname: string;
 }

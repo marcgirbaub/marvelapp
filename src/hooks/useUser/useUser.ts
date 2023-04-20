@@ -1,23 +1,19 @@
 import { useAppDispatch } from "../../redux/hooks";
-import axios from "axios";
 import { loginUserActionCreator } from "../../redux/features/user/userSlice";
 import { type User } from "../../redux/features/user/types";
-import { type LoginResponse, type UserCredentials } from "./types";
-
-const loginUrl = "data/loginuser.json";
+import { type UserCredentials } from "./types";
+import authorizedUser from "./data/authorizedUser";
 
 interface UseUserStructure {
-  loginUser: (userCredentials: UserCredentials) => Promise<void>;
+  loginUser: (userCredentials: UserCredentials) => void;
 }
 
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
 
-  const loginUser = async (userCredentials: UserCredentials) => {
+  const loginUser = (userCredentials: UserCredentials) => {
     try {
-      const response = await axios.get<LoginResponse>(loginUrl);
-
-      const { email, name, password, surname } = response.data;
+      const { email, name, password, surname } = authorizedUser;
 
       if (
         email !== userCredentials.email ||
