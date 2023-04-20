@@ -6,15 +6,17 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "NODE_OPTIONS=--openssl-legacy-provider react-native start",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "test:dev": "jest --watchAll",
-    "test:coverage": "jest --watchAll=false --collect-coverage --passWithNoTests",
+    "test:coverage": "jest --watchAll=false --collect-coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -31,13 +33,13 @@
     "eslint-config-xo-typescript": "^0.57.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-native": "^4.0.0",
+    "husky": "^8.0.0",
     "jest": "^25.1.0",
     "lint-staged": "^13.2.1",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.8.7",
     "react-test-renderer": "16.13.1",
-    "typescript": "^5.0.4",
-    "husky": "^8.0.0"
+    "typescript": "^5.0.4"
   },
   "resolutions": {
     "@types/react": "^16"
