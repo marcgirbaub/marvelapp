@@ -1,4 +1,4 @@
-import {type UserState, type User} from "./types";
+import { type UserState, type User } from "./types";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
