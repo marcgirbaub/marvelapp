@@ -1,14 +1,22 @@
 import {type UserState, type User} from "./types";
-import {loginUserActionCreator, userReducer} from "./userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+  userReducer,
+} from "./userSlice";
 
 describe("Given a userReducer reducer", () => {
-  describe("When it receives an initial state and an action to login a user with their email, name and surname", () => {
+  const initialState: UserState = {
+    email: "",
+    isLogged: false,
+    name: "",
+    surname: "",
+  };
+
+  describe("When it receives a current state and an action to login a user with their email, name and surname", () => {
     test("Then it should return a new state with the email, name and surname of the user and the property isLogged set to true", () => {
-      const initialState: UserState = {
-        email: "",
-        isLogged: false,
-        name: "",
-        surname: "",
+      const currentState: UserState = {
+        ...initialState,
       };
 
       const user: User = {
@@ -25,9 +33,25 @@ describe("Given a userReducer reducer", () => {
       };
 
       const loginUserAction = loginUserActionCreator(user);
-      const newState = userReducer(initialState, loginUserAction);
+      const newState = userReducer(currentState, loginUserAction);
 
       expect(newState).toStrictEqual(expectedNewState);
+    });
+  });
+
+  describe("When it receives the action to logout a user", () => {
+    test("Then it should return a new state equal to the initial state, with the property isLogged set to false", () => {
+      const currentState: UserState = {
+        email: "james@gmail.com",
+        name: "James",
+        surname: "Smith",
+        isLogged: true,
+      };
+
+      const logoutUserAction = logoutUserActionCreator();
+      const newState = userReducer(currentState, logoutUserAction);
+
+      expect(newState).toStrictEqual(initialState);
     });
   });
 });
