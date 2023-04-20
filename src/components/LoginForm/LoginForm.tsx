@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import loginFormStyles from "./LoginFormStyles";
+import loginFormStyles from "./loginFormStyles";
 import { type UserCredentials } from "../../hooks/useUser/types";
 import useUser from "../../hooks/useUser/useUser";
 
