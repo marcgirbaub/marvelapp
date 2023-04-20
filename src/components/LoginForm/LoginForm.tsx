@@ -102,6 +102,7 @@ const LoginForm = (): JSX.Element => {
           }
           activeOpacity={0.4}
           accessibilityLabel="press to log in"
+          accessibilityRole="button"
           disabled={isButtonDisabled}
           onPress={onSubmitHandler}
         >

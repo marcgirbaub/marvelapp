@@ -1,8 +1,8 @@
-import axios from "axios";
-import { type LoginResponse, type UserCredentials } from "./types";
 import { useAppDispatch } from "../../redux/hooks";
+import axios from "axios";
 import { loginUserActionCreator } from "../../redux/features/user/userSlice";
 import { type User } from "../../redux/features/user/types";
+import { type LoginResponse, type UserCredentials } from "./types";
 
 const loginUrl = "data/loginuser.json";
 

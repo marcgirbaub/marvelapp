@@ -9,9 +9,7 @@ const App = (): JSX.Element => (
   <>
     <Provider store={store}>
       <SafeAreaView>
-        <View style={globalStyles.container}>
-          <LoginForm />
-        </View>
+        <View style={globalStyles.container}></View>
       </SafeAreaView>
     </Provider>
   </>
