@@ -1,4 +1,5 @@
 import { useAppDispatch } from "../../redux/hooks";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { loginUserActionCreator } from "../../redux/features/user/userSlice";
 import { type User } from "../../redux/features/user/types";
 import { type UserCredentials } from "./types";
@@ -12,7 +13,7 @@ const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
   const loginUser = async (userCredentials: UserCredentials) => {
     await new Promise((resolve, reject) => {
-      setTimeout(() => {
+      setTimeout(async () => {
         const { email, name, password, surname } = authorizedUser;
 
         if (
@@ -26,6 +27,10 @@ const useUser = (): UseUserStructure => {
           };
 
           dispatch(loginUserActionCreator(userToLogin));
+
+          await AsyncStorage.setItem("name", name);
+          await AsyncStorage.setItem("surname", surname);
+          await AsyncStorage.setItem("email", email);
 
           resolve(userToLogin);
         } else {
