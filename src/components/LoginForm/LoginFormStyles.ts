@@ -11,19 +11,25 @@ const loginFormStyles = StyleSheet.create({
     padding: 14,
     fontSize: 18,
     marginBottom: 10,
-    backgroundColor: globalColors.lightColor,
+    backgroundColor: globalColors.light,
   },
   button: {
-    backgroundColor: globalColors.accentColor,
+    backgroundColor: globalColors.accent,
     padding: 12,
     alignItems: "center",
     borderRadius: 6,
   },
   buttonText: {
-    color: globalColors.mainColor,
+    color: globalColors.main,
     fontWeight: "bold",
     fontSize: 24,
     letterSpacing: 1,
+  },
+  buttonDisabled: {
+    backgroundColor: globalColors.accentLight,
+    padding: 12,
+    alignItems: "center",
+    borderRadius: 6,
   },
   errorText: {
     fontSize: 14,

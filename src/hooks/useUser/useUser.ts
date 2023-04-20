@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { loginUserActionCreator } from "../../redux/features/user/userSlice";
 import { type User } from "../../redux/features/user/types";
 
-const loginUrl = "../../data/loginUser.json";
+const loginUrl = "data/loginuser.json";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
