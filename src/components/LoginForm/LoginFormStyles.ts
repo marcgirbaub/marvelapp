@@ -35,6 +35,14 @@ const loginFormStyles = StyleSheet.create({
     fontSize: 14,
     fontStyle: "italic",
   },
+  loginError: {
+    fontSize: 20,
+    alignSelf: "center",
+    fontWeight: "bold",
+    letterSpacing: 0.75,
+    fontStyle: "italic",
+  },
+  feedbackContainer: { marginTop: 40, minHeight: 40, justifyContent: "center" },
 });
 
 export default loginFormStyles;

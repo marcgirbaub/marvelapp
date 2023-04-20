@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   Text,
   TextInput,
@@ -9,6 +10,7 @@ import {
 import loginFormStyles from "./LoginFormStyles";
 import { type UserCredentials } from "../../hooks/useUser/types";
 import useUser from "../../hooks/useUser/useUser";
+import { globalColors } from "../../styles/colors";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -18,14 +20,23 @@ const LoginForm = (): JSX.Element => {
     password: "",
   };
 
+  const initialErrorsState = {
+    password: "",
+    email: "",
+  };
+
   const [userCredentials, setUserCredentials] = useState(
     initialUserCredentials,
   );
 
-  const [errors, setErrors] = useState({ password: "", email: "" });
+  const [errors, setErrors] = useState(initialErrorsState);
+
+  const [loginError, setLoginError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handeFieldChange = (value: string, field: string) => {
     setUserCredentials({ ...userCredentials, [field]: value });
+    setErrors({ ...initialErrorsState });
   };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,14 +63,26 @@ const LoginForm = (): JSX.Element => {
       return;
     }
 
-    await loginUser(userToLogin);
-
+    setIsLoading(true);
     setErrors({ ...errors, password: "", email: "" });
-    setUserCredentials({ ...initialUserCredentials });
+
+    try {
+      await loginUser(userToLogin);
+
+      setUserCredentials({ ...initialUserCredentials });
+      setLoginError("");
+
+      setIsLoading(false);
+    } catch (error) {
+      setLoginError((error as Error).message);
+      setIsLoading(false);
+    }
   };
 
   const isButtonDisabled =
-    userCredentials.email === "" || userCredentials.password === "";
+    userCredentials.email === "" ||
+    userCredentials.password === "" ||
+    isLoading;
 
   return (
     <KeyboardAvoidingView behavior="padding">
@@ -72,6 +95,7 @@ const LoginForm = (): JSX.Element => {
             placeholder="Email address"
             accessibilityLabel="enter email address"
             value={userCredentials.email}
+            editable={!isLoading}
             onChangeText={(text) => {
               handeFieldChange(text, "email");
             }}
@@ -88,6 +112,7 @@ const LoginForm = (): JSX.Element => {
             textContentType="password"
             accessibilityLabel="enter password"
             value={userCredentials.password}
+            editable={!isLoading}
             onChangeText={(text) => {
               handeFieldChange(text, "password");
             }}
@@ -108,6 +133,14 @@ const LoginForm = (): JSX.Element => {
         >
           <Text style={loginFormStyles.buttonText}>Log in</Text>
         </TouchableOpacity>
+        <View style={loginFormStyles.feedbackContainer}>
+          {!isLoading && (
+            <Text style={loginFormStyles.loginError}>{loginError}</Text>
+          )}
+          {isLoading && (
+            <ActivityIndicator size="large" color={globalColors.accent} />
+          )}
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

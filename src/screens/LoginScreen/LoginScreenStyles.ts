@@ -5,7 +5,7 @@ const loginScreenStyles = StyleSheet.create({
   contentContainer: { justifyContent: "center", height: "100%" },
   title: {
     color: globalColors.accent,
-    fontSize: 48,
+    fontSize: 56,
     fontWeight: "bold",
     alignSelf: "center",
     marginBottom: 60,
