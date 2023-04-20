@@ -5,31 +5,34 @@ import { type UserCredentials } from "./types";
 import authorizedUser from "./data/authorizedUser";
 
 interface UseUserStructure {
-  loginUser: (userCredentials: UserCredentials) => void;
+  loginUser: (userCredentials: UserCredentials) => Promise<void>;
 }
 
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
+  const loginUser = async (userCredentials: UserCredentials) => {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const { email, name, password, surname } = authorizedUser;
 
-  const loginUser = (userCredentials: UserCredentials) => {
-    try {
-      const { email, name, password, surname } = authorizedUser;
+        if (
+          email === userCredentials.email &&
+          password === userCredentials.password
+        ) {
+          const userToLogin: User = {
+            email,
+            name,
+            surname,
+          };
 
-      if (
-        email !== userCredentials.email ||
-        password !== userCredentials.password
-      ) {
-        throw new Error("Invalid credentials");
-      }
+          dispatch(loginUserActionCreator(userToLogin));
 
-      const userToLogin: User = {
-        email,
-        name,
-        surname,
-      };
-
-      dispatch(loginUserActionCreator(userToLogin));
-    } catch (error) {}
+          resolve(userToLogin);
+        } else {
+          reject(new Error("Wrong Credentials"));
+        }
+      }, 2000);
+    });
   };
 
   return { loginUser };
