@@ -14,6 +14,20 @@ const headerStyles = StyleSheet.create({
     letterSpacing: 1,
     color: globalColors.accent,
   },
+  logoutButton: {
+    position: "absolute",
+    left: 20,
+    top: "40%",
+    backgroundColor: globalColors.grey,
+    paddingHorizontal: 10,
+    height: 30,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoutText: {
+    fontWeight: "bold",
+  },
 });
 
 export default headerStyles;
