@@ -31,6 +31,7 @@ const loginFormStyles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 6,
   },
+  errorContainer: { minHeight: 18 },
   errorText: {
     fontSize: 14,
     fontStyle: "italic",

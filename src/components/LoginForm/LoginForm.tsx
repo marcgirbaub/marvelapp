@@ -100,7 +100,9 @@ const LoginForm = (): JSX.Element => {
               handeFieldChange(text, "email");
             }}
           />
-          <Text style={loginFormStyles.errorText}>{errors.email}</Text>
+          <View style={loginFormStyles.errorContainer}>
+            <Text style={loginFormStyles.errorText}>{errors.email}</Text>
+          </View>
         </View>
         <View style={loginFormStyles.inputContainer}>
           <TextInput
@@ -117,7 +119,9 @@ const LoginForm = (): JSX.Element => {
               handeFieldChange(text, "password");
             }}
           />
-          <Text style={loginFormStyles.errorText}>{errors.password}</Text>
+          <View style={loginFormStyles.errorContainer}>
+            <Text style={loginFormStyles.errorText}>{errors.password}</Text>
+          </View>
         </View>
         <TouchableOpacity
           style={

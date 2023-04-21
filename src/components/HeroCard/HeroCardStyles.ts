@@ -5,7 +5,6 @@ const heroCardStyles = StyleSheet.create({
   container: {
     borderRadius: 20,
     backgroundColor: globalColors.light,
-    height: 400,
   },
   imageContainer: { width: "100%", height: 330 },
   image: {
@@ -16,12 +15,18 @@ const heroCardStyles = StyleSheet.create({
   },
   infoContainer: {
     padding: 12,
-    flexDirection: "row",
+    paddingBottom: 20,
+
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
-  name: { fontSize: 34, fontWeight: "bold" },
-  secondaryText: { fontSize: 16 },
+  name: {
+    fontSize: 34,
+    fontWeight: "bold",
+    marginBottom: 8,
+    textAlign: "center",
+  },
+  secondaryText: { fontSize: 18, textAlign: "center" },
 });
 
 export default heroCardStyles;
