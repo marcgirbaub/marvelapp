@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView } from "react-native";
 
-const HomeScreen = () => <SafeAreaView></SafeAreaView>;
+const HomeScreen = (): JSX.Element => <SafeAreaView></SafeAreaView>;
 
 export default HomeScreen;
