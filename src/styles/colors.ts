@@ -17,5 +17,5 @@ export const globalColors = {
   accent: "#c1111a",
   accentLight: "#BF545A",
   main: "#fff",
-  light: "#f4f4f4",
+  light: "#f0f0f0",
 };
