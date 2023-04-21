@@ -2,7 +2,10 @@ import { StyleSheet } from "react-native";
 import { globalColors } from "../../styles/colors";
 
 const loginScreenStyles = StyleSheet.create({
-  contentContainer: { justifyContent: "center", height: "100%" },
+  contentContainer: {
+    justifyContent: "center",
+    height: "100%",
+  },
   title: {
     color: globalColors.accent,
     fontSize: 56,

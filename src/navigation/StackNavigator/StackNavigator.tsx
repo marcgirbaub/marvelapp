@@ -4,23 +4,31 @@ import LoginScreen from "../../screens/LoginScreen/LoginScreen";
 import HomeScreen from "../../screens/HomeScreen/HomeScreen";
 import { type RootStackParamList } from "../../types/navigation.types";
 import Routes from "../routes";
+import Header from "../../components/Header/Header";
+import { SafeAreaView } from "react-native";
+import globalStyles from "../../styles/globalStyles";
 
 const StackNavigator = (): JSX.Element => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
-    <Stack.Navigator initialRouteName={Routes.login}>
-      <Stack.Screen
-        component={LoginScreen}
-        options={{ headerShown: false }}
-        name={Routes.login}
-      />
-      <Stack.Screen
-        component={HomeScreen}
-        name={Routes.home}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
+    <SafeAreaView style={globalStyles.safeArea}>
+      <Stack.Navigator
+        initialRouteName={Routes.login}
+        screenOptions={{ header: () => <Header /> }}
+      >
+        <Stack.Screen
+          component={LoginScreen}
+          options={{ headerShown: false }}
+          name={Routes.login}
+        />
+        <Stack.Screen
+          component={HomeScreen}
+          name={Routes.home}
+          options={{ headerShown: true }}
+        />
+      </Stack.Navigator>
+    </SafeAreaView>
   );
 };
 
