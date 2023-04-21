@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import globalStyles from "../../styles/globalStyles";
 import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
 import HeroesList from "../../components/HeroesList/HeroesList";
+import homeScreenStyles from "./HomeScreenStyles";
 
 const HomeScreen = (): JSX.Element => {
   const { heroes, isFetching } = useLoadHeroes();
@@ -10,7 +11,9 @@ const HomeScreen = (): JSX.Element => {
   if (isFetching && !heroes.length) {
     return (
       <View style={globalStyles.container}>
-        <Text>Skeleton</Text>
+        <View style={homeScreenStyles.skeleton}></View>
+        <View style={homeScreenStyles.skeleton}></View>
+        <View style={homeScreenStyles.skeleton}></View>
       </View>
     );
   }

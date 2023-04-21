@@ -2,6 +2,7 @@ import React from "react";
 import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import HeroCard from "../HeroCard/HeroCard";
 import heroesListStyles from "./HeroesListStyles";
+import { globalColors } from "../../styles/colors";
 
 interface HeroesListProps {
   onEndReachedAction: () => void;
@@ -17,7 +18,11 @@ const HeroesList = ({
   const renderSeparator = () => <View style={heroesListStyles.gap}></View>;
 
   if (!heroesList.length) {
-    return <Text>There was an error loading the heroes</Text>;
+    return (
+      <Text style={heroesListStyles.errorText}>
+        There was an error loading the heroes
+      </Text>
+    );
   }
 
   return (
@@ -31,7 +36,7 @@ const HeroesList = ({
       contentContainerStyle={heroesListStyles.list}
       ListFooterComponent={
         isFetching && heroesList.length ? (
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" color={globalColors.accent} />
         ) : null
       }
     />
