@@ -1,4 +1,22 @@
-interface MarvelHeroData {
+type MarvelHeroesListResponse = {
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
+  etag: string;
+  data: {
+    offset: number;
+    limit: number;
+    total: number;
+    count: number;
+    results: MarvelHeroData;
+  };
+};
+
+type MarvelResponse = MarvelHeroesListResponse;
+
+interface MarvelHero {
   id: number;
   name: string;
   description: string;
@@ -51,21 +69,6 @@ interface MarvelHeroData {
   }>;
 }
 
-interface MarvelHero {
-  id: number;
-  name: string;
-  description: string;
-  thumbnail: {
-    path: string;
-    extension: string;
-  };
-  comics: {
-    available: number;
-    collectionURI: string;
-    items: Array<{
-      resourceURI: string;
-      name: string;
-    }>;
-    returned: number;
-  };
-}
+type MarvelHeroData = MarvelHero[];
+
+type MarvelData = MarvelHeroData;

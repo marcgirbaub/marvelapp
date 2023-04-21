@@ -8,10 +8,7 @@ module.exports = {
   overrides: [
     {
       rules: {
-        "@typescript-eslint/consistent-type-definitions": [
-          "error",
-          "interface",
-        ],
+        "@typescript-eslint/consistent-type-definitions": "off",
         "@typescript-eslint/naming-convention": "off",
       },
       extends: ["xo-typescript", "prettier"],

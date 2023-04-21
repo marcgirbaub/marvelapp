@@ -19,6 +19,27 @@ export const mockHero3D: MarvelHero = {
     ],
     returned: 12,
   },
+  modified: "",
+  resourceURI: "",
+  series: {
+    available: 0,
+    collectionURI: "",
+    items: [],
+    returned: 0,
+  },
+  stories: {
+    available: 0,
+    collectionURI: "",
+    items: [],
+    returned: 0,
+  },
+  events: {
+    available: 0,
+    collectionURI: "",
+    items: [],
+    returned: 0,
+  },
+  urls: [],
 };
 
 export const mockHeroBomb: MarvelHero = {
@@ -54,6 +75,27 @@ export const mockHeroBomb: MarvelHero = {
     ],
     returned: 4,
   },
+  modified: "",
+  resourceURI: "",
+  series: {
+    available: 0,
+    collectionURI: "",
+    items: [],
+    returned: 0,
+  },
+  stories: {
+    available: 0,
+    collectionURI: "",
+    items: [],
+    returned: 0,
+  },
+  events: {
+    available: 0,
+    collectionURI: "",
+    items: [],
+    returned: 0,
+  },
+  urls: [],
 };
 
-export const mockListOfHeroes: MarvelHero[] = [mockHero3D, mockHeroBomb];
+export const mockListOfHeroes: MarvelHeroData = [mockHero3D, mockHeroBomb];

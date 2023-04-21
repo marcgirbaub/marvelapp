@@ -5,7 +5,7 @@ import heroesListStyles from "./HeroesListStyles";
 
 interface HeroesListProps {
   onEndReachedAction: () => void;
-  heroesList: MarvelHero[];
+  heroesList: MarvelHeroData;
 }
 
 const HeroesList = ({
