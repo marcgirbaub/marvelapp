@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 import { globalColors } from "./colors";
 
 const globalStyles = StyleSheet.create({
-  safeArea: { height: "100%" },
+  safeArea: { flex: 1 },
   container: {
     padding: 20,
     backgroundColor: globalColors.main,
+    flex: 1,
   },
 });
 
