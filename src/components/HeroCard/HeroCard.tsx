@@ -9,7 +9,7 @@ interface HeroCardProps {
 const HeroCard = ({
   hero: { name, thumbnail, comics },
 }: HeroCardProps): JSX.Element => (
-  <View style={heroCardStyles.container}>
+  <View style={heroCardStyles.container} testID="heroCard">
     <View style={heroCardStyles.imageContainer}>
       <Image
         source={{ uri: `${thumbnail.path}.${thumbnail.extension}` }}
