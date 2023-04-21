@@ -11,11 +11,13 @@ import globalStyles from "../../styles/globalStyles";
 const StackNavigator = (): JSX.Element => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
+  const renderHeader = () => <Header />;
+
   return (
     <SafeAreaView style={globalStyles.safeArea}>
       <Stack.Navigator
         initialRouteName={Routes.login}
-        screenOptions={{ header: () => <Header /> }}
+        screenOptions={{ header: () => renderHeader() }}
       >
         <Stack.Screen
           component={LoginScreen}
