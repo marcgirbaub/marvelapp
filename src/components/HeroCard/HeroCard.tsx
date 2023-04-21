@@ -15,6 +15,7 @@ const HeroCard = ({
         source={{ uri: `${thumbnail.path}.${thumbnail.extension}` }}
         style={heroCardStyles.image}
         resizeMode="cover"
+        accessibilityLabel={name}
       />
     </View>
     <View style={heroCardStyles.infoContainer}>
