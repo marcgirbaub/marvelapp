@@ -1,9 +1,12 @@
 import { useAppDispatch } from "../../redux/hooks";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 import { loginUserActionCreator } from "../../redux/features/user/userSlice";
 import { type User } from "../../redux/features/user/types";
 import { type UserCredentials } from "./types";
 import authorizedUser from "./data/authorizedUser";
+import Routes from "../../navigation/routes";
+import { type Props } from "../../types/navigation.types";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -11,6 +14,8 @@ interface UseUserStructure {
 
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<Props>();
+
   const loginUser = async (userCredentials: UserCredentials) => {
     await new Promise((resolve, reject) => {
       setTimeout(async () => {
@@ -33,6 +38,7 @@ const useUser = (): UseUserStructure => {
           await AsyncStorage.setItem("email", email);
 
           resolve(userToLogin);
+          navigation.navigate(Routes.home);
         } else {
           reject(new Error("Wrong Credentials"));
         }
