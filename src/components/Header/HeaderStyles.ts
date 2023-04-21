@@ -6,6 +6,7 @@ const headerStyles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 10,
+    backgroundColor: globalColors.main,
   },
   title: {
     fontSize: 40,

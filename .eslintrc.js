@@ -12,6 +12,7 @@ module.exports = {
           "error",
           "interface",
         ],
+        "@typescript-eslint/naming-convention": "off",
       },
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
