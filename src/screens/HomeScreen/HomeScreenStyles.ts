@@ -5,7 +5,7 @@ const homeScreenStyles = StyleSheet.create({
   skeleton: {
     width: "100%",
     height: 432,
-    backgroundColor: globalColors.light,
+    backgroundColor: globalColors.grey,
     borderRadius: 20,
     marginBottom: 30,
   },

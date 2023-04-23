@@ -13,9 +13,9 @@ export const darkTheme = {
 };
 
 export const globalColors = {
-  grey: "#bcbcc4",
+  grey: "#cecece",
   accent: "#c1111a",
-  accentLight: "#BF545A",
+  accentLight: "#bf545a",
   main: "#fff",
   light: "#f0f0f0",
 };

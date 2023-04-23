@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-
 import { type NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type Routes from "../navigation/routes";
 

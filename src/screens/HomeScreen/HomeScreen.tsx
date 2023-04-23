@@ -1,12 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import globalStyles from "../../styles/globalStyles";
 import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
 import HeroesList from "../../components/HeroesList/HeroesList";
 import homeScreenStyles from "./HomeScreenStyles";
 
 const HomeScreen = (): JSX.Element => {
-  const { heroes, isFetching } = useLoadHeroes();
+  const { heroes, isFetching, paginate } = useLoadHeroes();
 
   if (isFetching && !heroes.length) {
     return (
@@ -22,7 +22,9 @@ const HomeScreen = (): JSX.Element => {
     <View style={globalStyles.container}>
       <HeroesList
         heroesList={heroes}
-        onEndReachedAction={() => []}
+        onEndReachedAction={async () => {
+          await paginate();
+        }}
         isFetching={isFetching}
       />
     </View>
