@@ -4,7 +4,7 @@ import { globalColors } from "../../styles/colors";
 const heroCardStyles = StyleSheet.create({
   container: {
     borderRadius: 20,
-    backgroundColor: globalColors.light,
+    backgroundColor: globalColors.grey,
   },
   imageContainer: { width: "100%", height: 330 },
   image: {

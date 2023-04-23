@@ -32,11 +32,16 @@ const HeroesList = ({
       showsVerticalScrollIndicator={false}
       keyExtractor={(item) => item.id.toString()}
       onEndReached={onEndReachedAction}
+      onEndReachedThreshold={1}
       ItemSeparatorComponent={renderSeparator}
       contentContainerStyle={heroesListStyles.list}
       ListFooterComponent={
         isFetching && heroesList.length ? (
-          <ActivityIndicator size="large" color={globalColors.accent} />
+          <ActivityIndicator
+            size="large"
+            color={globalColors.accent}
+            style={heroesListStyles.infinitiLoader}
+          />
         ) : null
       }
     />
