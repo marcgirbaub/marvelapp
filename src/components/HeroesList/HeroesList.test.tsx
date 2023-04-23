@@ -14,6 +14,7 @@ describe("Given a HeroesList component", () => {
         <HeroesList
           heroesList={mockListOfHeroes}
           onEndReachedAction={() => "endOfPage"}
+          isFetching={false}
         />,
       );
 
