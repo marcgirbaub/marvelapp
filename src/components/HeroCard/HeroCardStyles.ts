@@ -16,7 +16,6 @@ const heroCardStyles = StyleSheet.create({
   infoContainer: {
     padding: 12,
     paddingBottom: 20,
-
     alignItems: "center",
     justifyContent: "center",
   },

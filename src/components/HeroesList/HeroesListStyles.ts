@@ -5,7 +5,16 @@ const heroesListStyles = StyleSheet.create({
   gap: { height: 30 },
   list: { paddingBottom: 20 },
   errorText: { fontSize: 20, alignSelf: "center", letterSpacing: 0.75 },
-  infinitiLoader: { marginVertical: 20 },
+  infinitiLoader: {
+    marginVertical: 20,
+    position: "absolute",
+    zIndex: 1,
+    borderRadius: 50,
+    bottom: 20,
+    left: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   scrollButton: {
     height: 60,
     width: 60,

@@ -52,20 +52,18 @@ const HeroesList = ({
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
         onEndReached={onEndReachedAction}
-        onEndReachedThreshold={1}
+        onEndReachedThreshold={0.5}
         ItemSeparatorComponent={renderSeparator}
         contentContainerStyle={heroesListStyles.list}
         ref={heroesListRef}
-        ListFooterComponent={
-          isFetching && heroesList.length ? (
-            <ActivityIndicator
-              size="large"
-              color={globalColors.accent}
-              style={heroesListStyles.infinitiLoader}
-            />
-          ) : null
-        }
       />
+      {isFetching && heroesList.length ? (
+        <ActivityIndicator
+          size="large"
+          color={globalColors.accent}
+          style={heroesListStyles.infinitiLoader}
+        />
+      ) : null}
     </View>
   );
 };

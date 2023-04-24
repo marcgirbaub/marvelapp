@@ -41,12 +41,10 @@ const useLoadHeroes = () => {
   }, []);
 
   const paginate = useCallback(async () => {
-    setPage((p) => p + 1);
-
     setIsFetching(true);
 
     const response = await api.get(
-      `${charactersEndpoint}?offset=${page * limit}`,
+      `${charactersEndpoint}?offset=${(page + 1) * limit}`,
     );
 
     if (!response.ok) {
@@ -61,7 +59,8 @@ const useLoadHeroes = () => {
       ...(response.data as MarvelHeroesListResponse).data.results,
     ]);
     setIsFetching(false);
-  }, [page]);
+    setPage((p) => p + 1);
+  }, [page, heroes]);
 
   return { heroes, isFetching, paginate };
 };
