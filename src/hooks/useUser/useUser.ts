@@ -1,8 +1,8 @@
-import { useAppDispatch } from "../../redux/hooks";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAppDispatch } from "../../store/redux/hooks";
 import { useNavigation } from "@react-navigation/native";
-import { loginUserActionCreator } from "../../redux/features/user/userSlice";
-import { type User } from "../../redux/features/user/types";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { loginUserActionCreator } from "../../store/redux/features/user/userSlice";
+import { type User } from "../../store/redux/features/user/types";
 import { type UserCredentials } from "./types";
 import authorizedUser from "./data/authorizedUser";
 import Routes from "../../navigation/routes";

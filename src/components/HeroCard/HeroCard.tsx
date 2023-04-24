@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
 import heroCardStyles from "./HeroCardStyles";
+import { type MarvelHero } from "../../types/types";
 
 interface HeroCardProps {
   hero: MarvelHero;

@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable no-negated-condition */
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable no-async-promise-executor */
-
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { create, type ApisauceInstance } from "apisauce";
 import { type MarvelData, type MarvelResponse } from "../../types/types";
