@@ -29,7 +29,7 @@ describe("Given a useStorage hook", () => {
     });
   });
 
-  describe("And there is data from the user storaged in the AsyncStorage", () => {
+  describe("When the getFromStorage function is called and there is data from the user storaged in the AsyncStorage", () => {
     test("Then the dispatch should be called", async () => {
       const {
         result: {
@@ -42,6 +42,22 @@ describe("Given a useStorage hook", () => {
       await getFromStorage();
 
       expect(spyDispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the removeFromStorage function is called", () => {
+    test("Then the removeItem method from AsyncStorage should be called three times", async () => {
+      const expectedNumberOfCalls = 3;
+
+      const {
+        result: {
+          current: { removeFromStorage },
+        },
+      } = renderHook(() => useStorage(), { wrapper: Wrapper });
+
+      await removeFromStorage();
+
+      expect(AsyncStorage.removeItem).toBeCalledTimes(expectedNumberOfCalls);
     });
   });
 });
