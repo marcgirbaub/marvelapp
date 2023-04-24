@@ -1,3 +1,5 @@
+import { type MarvelHero, type MarvelHeroData } from "../types/types";
+
 export const mockHero3D: MarvelHero = {
   id: 1011334,
   name: "3-D Man",

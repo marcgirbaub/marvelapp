@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import useStorage from "../../../hooks/useStorage/useStorage";
-import { logoutUserActionCreator } from "../../../redux/features/user/userSlice";
-import { useAppDispatch } from "../../../redux/hooks";
+import { logoutUserActionCreator } from "../../../store/redux/features/user/userSlice";
+import { useAppDispatch } from "../../../store/redux/hooks";
 import Routes from "../../../navigation/routes";
 import { type Props } from "../../../types/navigation.types";
 

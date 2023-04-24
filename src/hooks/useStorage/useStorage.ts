@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useAppDispatch } from "../../redux/hooks";
-import { loginUserActionCreator } from "../../redux/features/user/userSlice";
-import { type User } from "../../redux/features/user/types";
+import { useAppDispatch } from "../../store/redux/hooks";
+import { loginUserActionCreator } from "../../store/redux/features/user/userSlice";
+import { type User } from "../../store/redux/features/user/types";
 
 interface UseStorageStructure {
   getFromStorage: () => Promise<void>;

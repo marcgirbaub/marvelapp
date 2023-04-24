@@ -9,6 +9,7 @@ import {
 import HeroCard from "../HeroCard/HeroCard";
 import heroesListStyles from "./HeroesListStyles";
 import { globalColors } from "../../styles/colors";
+import { type MarvelHero, type MarvelHeroData } from "../../types/types";
 
 interface HeroesListProps {
   onEndReachedAction: () => void;

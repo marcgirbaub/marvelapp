@@ -4,11 +4,12 @@ import globalStyles from "../../styles/globalStyles";
 import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
 import HeroesList from "../../components/HeroesList/HeroesList";
 import homeScreenStyles from "./HomeScreenStyles";
+import { type MarvelHeroData } from "../../types/types";
 
 const HomeScreen = (): JSX.Element => {
   const { heroes, isFetching, paginate } = useLoadHeroes();
 
-  if (isFetching && !heroes.length) {
+  if ((isFetching && !heroes?.length) || !heroes) {
     return (
       <View style={globalStyles.container} accessibilityLabel="loading heroes">
         <View style={homeScreenStyles.skeleton}></View>
@@ -21,9 +22,9 @@ const HomeScreen = (): JSX.Element => {
   return (
     <View style={globalStyles.container}>
       <HeroesList
-        heroesList={heroes}
-        onEndReachedAction={async () => {
-          await paginate();
+        heroesList={heroes as MarvelHeroData}
+        onEndReachedAction={() => {
+          paginate();
         }}
         isFetching={isFetching}
       />
