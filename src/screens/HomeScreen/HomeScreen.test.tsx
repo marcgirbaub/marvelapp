@@ -18,7 +18,7 @@ describe("Given a HomeScreen component", () => {
 
         mockUseLoadHeroes.mockReturnValue({
           isFetching: false,
-          heroes: mockListOfHeroes,
+          marvelData: mockListOfHeroes,
           paginate: jest.fn(),
         });
 

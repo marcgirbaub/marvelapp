@@ -1,7 +1,7 @@
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { type HeroStructure, type HeroState } from "./types";
+import { type HeroState } from "./types";
 
-const initialHeroState: HeroState = {
+export const initialHeroState: HeroState = {
   currentHero: {
     description: "",
     id: "",
