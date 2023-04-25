@@ -7,7 +7,7 @@ import homeScreenStyles from "./HomeScreenStyles";
 import { type MarvelHeroData } from "../../types/types";
 
 const HomeScreen = (): JSX.Element => {
-  const { heroes, isFetching, paginate } = useLoadHeroes();
+  const { marvelData: heroes, isFetching, paginate } = useLoadHeroes();
 
   if ((isFetching && !heroes?.length) || !heroes) {
     return (

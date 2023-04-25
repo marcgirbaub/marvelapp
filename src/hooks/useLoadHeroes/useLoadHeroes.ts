@@ -4,7 +4,7 @@ const useLoadHeroes = () => {
   const [state, actions] = useCachedRequests();
 
   return {
-    heroes: state.data,
+    marvelData: state.data,
     isFetching: state.isFetching,
     paginate: actions.paginate,
   };
