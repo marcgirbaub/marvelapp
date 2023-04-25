@@ -1,5 +1,6 @@
 import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { type HeroState } from "./types";
+import { marvelBaseUrl } from "../../../../constants/apiConstants";
 
 export const initialHeroState: HeroState = {
   currentHero: {
@@ -8,7 +9,7 @@ export const initialHeroState: HeroState = {
     name: "",
     thumbnail: { extension: "", path: "" },
   },
-  url: "",
+  url: marvelBaseUrl,
 };
 
 const heroSlice = createSlice({
