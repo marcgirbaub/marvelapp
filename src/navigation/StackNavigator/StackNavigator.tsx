@@ -7,6 +7,7 @@ import Routes from "../routes";
 import Header from "../../components/Header/Header";
 import { SafeAreaView } from "react-native";
 import globalStyles from "../../styles/globalStyles";
+import HeroDetailScreen from "../../screens/HeroDetailScreen/HeroDetailScreen";
 
 const StackNavigator = (): JSX.Element => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,6 +28,11 @@ const StackNavigator = (): JSX.Element => {
         <Stack.Screen
           component={HomeScreen}
           name={Routes.home}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          component={HeroDetailScreen}
+          name={Routes.detail}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

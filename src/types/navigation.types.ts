@@ -4,6 +4,7 @@ import type Routes from "../navigation/routes";
 export type RootStackParamList = {
   [Routes.login]: undefined;
   [Routes.home]: undefined;
+  [Routes.detail]: undefined;
 };
 
-export type Props = NativeStackNavigationProp<RootStackParamList>;
+export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;

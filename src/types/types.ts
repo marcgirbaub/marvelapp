@@ -154,7 +154,7 @@ export type MarvelComic = {
     items: Array<{
       resourceURI: string;
       name: string;
-      role: string;
+      role?: string;
     }>;
     returned: number;
   };
