@@ -15,12 +15,14 @@ interface HeroesListProps {
   onEndReachedAction: () => void;
   heroesList: MarvelHeroData;
   isFetching: boolean;
+  resetPage: () => void;
 }
 
 const HeroesList = ({
   heroesList,
   onEndReachedAction,
   isFetching,
+  resetPage,
 }: HeroesListProps): JSX.Element => {
   const renderSeparator = () => <View style={heroesListStyles.gap}></View>;
 
@@ -49,7 +51,9 @@ const HeroesList = ({
       </TouchableOpacity>
       <FlatList
         data={heroesList}
-        renderItem={({ item }) => <HeroCard hero={item} />}
+        renderItem={({ item }) => (
+          <HeroCard hero={item} resetPage={resetPage} />
+        )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
         onEndReached={onEndReachedAction}

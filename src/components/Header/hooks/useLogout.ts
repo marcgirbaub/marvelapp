@@ -3,7 +3,7 @@ import useStorage from "../../../hooks/useStorage/useStorage";
 import { logoutUserActionCreator } from "../../../store/redux/features/user/userSlice";
 import { useAppDispatch } from "../../../store/redux/hooks";
 import Routes from "../../../navigation/routes";
-import { type Props } from "../../../types/navigation.types";
+import { type NavigationProps } from "../../../types/navigation.types";
 
 interface UseLogoutStructure {
   handleLogout: () => Promise<void>;
@@ -12,7 +12,7 @@ interface UseLogoutStructure {
 const useLogout = (): UseLogoutStructure => {
   const dispatch = useAppDispatch();
   const { removeFromStorage } = useStorage();
-  const navigation = useNavigation<Props>();
+  const navigation = useNavigation<NavigationProps>();
 
   const handleLogout = async () => {
     dispatch(logoutUserActionCreator());

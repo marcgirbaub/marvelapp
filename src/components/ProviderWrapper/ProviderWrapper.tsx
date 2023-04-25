@@ -7,6 +7,7 @@ import { useAppSelector } from "../../store/redux/hooks";
 
 const ProviderWrapper = (): JSX.Element => {
   const { url } = useAppSelector((state) => state.hero);
+
   return (
     <CachedRequestsProvider maxResultsPerPage={resultsPerPage} url={url}>
       <NavigationContainer>

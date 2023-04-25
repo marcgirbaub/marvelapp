@@ -4,10 +4,15 @@ import globalStyles from "../../styles/globalStyles";
 import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
 import HeroesList from "../../components/HeroesList/HeroesList";
 import homeScreenStyles from "./HomeScreenStyles";
-import { type MarvelHeroData } from "../../types/types";
+import { type MarvelHero, type MarvelHeroData } from "../../types/types";
 
 const HomeScreen = (): JSX.Element => {
-  const { marvelData: heroes, isFetching, paginate } = useLoadHeroes();
+  const {
+    marvelData: heroes,
+    isFetching,
+    paginate,
+    resetPage,
+  } = useLoadHeroes();
 
   if ((isFetching && !heroes?.length) || !heroes) {
     return (
@@ -21,13 +26,16 @@ const HomeScreen = (): JSX.Element => {
 
   return (
     <View style={globalStyles.container}>
-      <HeroesList
-        heroesList={heroes as MarvelHeroData}
-        onEndReachedAction={() => {
-          paginate();
-        }}
-        isFetching={isFetching}
-      />
+      {(heroes[0] as MarvelHero)?.comics && (
+        <HeroesList
+          heroesList={heroes as MarvelHeroData}
+          onEndReachedAction={() => {
+            paginate();
+          }}
+          resetPage={resetPage}
+          isFetching={isFetching}
+        />
+      )}
     </View>
   );
 };

@@ -16,8 +16,8 @@ const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
 
   const initialUserCredentials: UserCredentials = {
-    email: "",
-    password: "",
+    email: "james@gmail.com",
+    password: "james1234",
   };
 
   const initialErrorsState = {
