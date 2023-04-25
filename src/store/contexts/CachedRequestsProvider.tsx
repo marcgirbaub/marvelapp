@@ -14,6 +14,8 @@ import {
   type ContextStateInitialized,
   type IActions,
 } from "./ApiRequestContext";
+import { useAppSelector } from "../redux/hooks";
+import { Alert } from "react-native";
 
 type Props = {
   url: string;
@@ -131,6 +133,15 @@ export function CachedRequestsProvider({
 
   const [page, setPage] = useState(0);
 
+  const user = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!user.isLogged) {
+      setState({ ...state, data: [] } as ContextStateFetched<MarvelData>);
+      setPage(0);
+    }
+  }, [user.isLogged]);
+
   const getNavigatableUrl = useCallback((): string => {
     const newUrl = new URL(url);
     Object.entries({
@@ -139,10 +150,19 @@ export function CachedRequestsProvider({
     }).forEach((param) => {
       newUrl.searchParams.append(param[0], param[1]);
     });
-    const parsedUrl = newUrl.toString().replace("characters/", "characters");
+
+    let parsedUrl = "";
+
+    if (newUrl.toString().includes("characters/")) {
+      parsedUrl = newUrl.toString().replace("characters/", "characters");
+    }
+
+    if (newUrl.toString().includes("comics/")) {
+      parsedUrl = newUrl.toString().replace("comics/", "comics");
+    }
 
     return parsedUrl;
-  }, [page, state]);
+  }, [page, url]);
 
   useEffect(() => {
     if (state.isFetching || !state.url) {
@@ -161,13 +181,19 @@ export function CachedRequestsProvider({
           },
     );
 
-    marvelProxy[getNavigatableUrl()].then((value) => {
-      setState({
-        ...state,
-        isFetching: false,
-        data: [...(state.data ?? []), ...value.data.results],
-      } as ContextStateFetched<MarvelData>);
-    });
+    marvelProxy[getNavigatableUrl()]
+      .then((value) => {
+        const previousData = page === 0 ? [] : state.data;
+
+        setState({
+          ...state,
+          isFetching: false,
+          data: [...(previousData ?? []), ...value.data.results],
+        } as ContextStateFetched<MarvelData>);
+      })
+      .catch((error) => {
+        Alert.alert("Error fetching data");
+      });
   }, [page, url]);
 
   return (
@@ -177,6 +203,9 @@ export function CachedRequestsProvider({
         {
           paginate() {
             setPage(page + 1);
+          },
+          resetPage() {
+            setPage(0);
           },
         },
       ]}

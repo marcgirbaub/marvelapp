@@ -6,7 +6,7 @@ import { type User } from "../../store/redux/features/user/types";
 import { type UserCredentials } from "./types";
 import authorizedUser from "./data/authorizedUser";
 import Routes from "../../navigation/routes";
-import { type Props } from "../../types/navigation.types";
+import { type NavigationProps } from "../../types/navigation.types";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -14,7 +14,7 @@ interface UseUserStructure {
 
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
-  const navigation = useNavigation<Props>();
+  const navigation = useNavigation<NavigationProps>();
 
   const loginUser = async (userCredentials: UserCredentials) => {
     await new Promise((resolve, reject) => {

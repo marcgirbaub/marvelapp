@@ -7,6 +7,7 @@ const useLoadHeroes = () => {
     marvelData: state.data,
     isFetching: state.isFetching,
     paginate: actions.paginate,
+    resetPage: actions.resetPage,
   };
 };
 
