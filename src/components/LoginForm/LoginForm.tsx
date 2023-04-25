@@ -37,6 +37,7 @@ const LoginForm = (): JSX.Element => {
   const handeFieldChange = (value: string, field: string) => {
     setUserCredentials({ ...userCredentials, [field]: value });
     setErrors({ ...initialErrorsState });
+    setLoginError("");
   };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
