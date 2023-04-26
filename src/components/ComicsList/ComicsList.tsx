@@ -15,7 +15,10 @@ const ComicList = (): JSX.Element => {
 
   if (isFetching && !comics?.length) {
     return (
-      <View style={comicListStyles.skeletonContainer}>
+      <View
+        style={comicListStyles.skeletonContainer}
+        accessibilityLabel="loading comics"
+      >
         <View style={comicListStyles.skeleton}></View>
         <View style={comicListStyles.skeleton}></View>
       </View>

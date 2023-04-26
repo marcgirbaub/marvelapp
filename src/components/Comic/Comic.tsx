@@ -8,7 +8,7 @@ interface ComicProps {
 }
 
 const Comic = ({ comic }: ComicProps): JSX.Element => (
-  <View style={comicStyles.comicContainer}>
+  <View style={comicStyles.comicContainer} testID="comic">
     <Image
       source={{
         uri: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
