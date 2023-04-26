@@ -25,22 +25,7 @@ const heroDetailScreenStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  gap: { width: 20 },
-  comicContainer: { width: 210 },
   comicsSection: { alignItems: "center", justifyContent: "center" },
-  comicImage: { width: "100%", height: 319, marginBottom: 8 },
-  comicTitle: { fontSize: 16, textAlign: "center" },
-  comicsList: { paddingBottom: 20 },
-  skeletonContainer: {
-    flexDirection: "row",
-    overflow: "scroll",
-  },
-  skeleton: {
-    backgroundColor: globalColors.grey,
-    width: 210,
-    height: 319,
-    marginRight: 20,
-  },
 });
 
 export default heroDetailScreenStyles;

@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
 import LoginScreen from "../../screens/LoginScreen/LoginScreen";
 import { type RootStackParamList } from "../../types/navigation.types";
 import Routes from "../routes";
@@ -36,6 +36,7 @@ const StackNavigator = (): JSX.Element => {
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
+      <StatusBar barStyle={"dark-content"} />
     </SafeAreaView>
   );
 };
