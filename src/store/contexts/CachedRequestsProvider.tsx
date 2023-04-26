@@ -140,15 +140,7 @@ export function CachedRequestsProvider({
 
   const [page, setPage] = useState(0);
 
-  const user = useAppSelector((state) => state.user);
   const { url: stateUrl, currentHero } = useAppSelector((state) => state.hero);
-
-  useEffect(() => {
-    if (!user.isLogged) {
-      setState({ ...state, data: [] } as ContextStateFetched<MarvelData>);
-      setPage(0);
-    }
-  }, [user.isLogged]);
 
   const getNavigatableUrl = useCallback((): string => {
     const newUrl = new URL(url);

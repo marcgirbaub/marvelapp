@@ -1,0 +1,63 @@
+import { type MarvelComic } from "../types/types";
+
+export const getMockComic = (
+  title: string,
+  id: number,
+  path: string,
+): MarvelComic => ({
+  id,
+  digitalId: 0,
+  title,
+  issueNumber: 0,
+  variantDescription: ".",
+  description: ".",
+  modified: ".",
+  isbn: ".",
+  upc: ".",
+  diamondCode: ".",
+  ean: ".",
+  issn: ".",
+  format: ".",
+  pageCount: 0,
+  textObjects: [],
+  resourceURI: ".",
+  urls: [],
+  series: {
+    resourceURI: ".",
+    name: ".",
+  },
+  variants: [],
+  collections: [],
+  collectedIssues: [],
+  dates: [],
+  prices: [],
+  thumbnail: {
+    path,
+    extension: "jpg",
+  },
+  images: [],
+  creators: {
+    available: 0,
+    collectionURI: ".",
+    items: [],
+    returned: 0,
+  },
+  characters: {
+    available: 0,
+    collectionURI: ".",
+    items: [],
+    returned: 0,
+  },
+  stories: {
+    available: 0,
+    collectionURI: ".",
+    items: [],
+    returned: 0,
+  },
+  events: {
+    available: 0,
+    collectionURI: ".",
+    items: [],
+    returned: 0,
+  },
+});

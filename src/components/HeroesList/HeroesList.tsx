@@ -62,7 +62,7 @@ const HeroesList = ({
         <ActivityIndicator
           size="large"
           color={globalColors.accent}
-          style={heroesListStyles.infinitiLoader}
+          style={heroesListStyles.infiniteLoader}
         />
       ) : null}
     </View>
