@@ -14,6 +14,7 @@ const Comic = ({ comic }: ComicProps): JSX.Element => (
         uri: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
       }}
       style={comicStyles.comicImage}
+      accessibilityLabel={`${comic.title} comic image`}
     />
     <Text style={comicStyles.comicTitle}>{comic.title}</Text>
   </View>
