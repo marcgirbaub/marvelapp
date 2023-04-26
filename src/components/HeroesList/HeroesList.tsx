@@ -17,20 +17,20 @@ interface HeroesListProps {
   isFetching: boolean;
 }
 
+const renderSeparator = () => <View style={heroesListStyles.gap}></View>;
+
 const HeroesList = ({
   heroesList,
   onEndReachedAction,
   isFetching,
 }: HeroesListProps): JSX.Element => {
-  const renderSeparator = () => <View style={heroesListStyles.gap}></View>;
-
   const heroesListRef = useRef<FlatList<MarvelHero>>(null);
 
   const scrollToTop = () => {
     heroesListRef.current!.scrollToOffset({ animated: true, offset: 0 });
   };
 
-  if (!heroesList.length) {
+  if (!heroesList?.length) {
     return (
       <Text style={heroesListStyles.errorText}>
         There was an error loading the heroes

@@ -28,6 +28,21 @@ const headerStyles = StyleSheet.create({
   logoutText: {
     fontWeight: "bold",
   },
+  goBack: {
+    position: "absolute",
+    left: 20,
+    top: "40%",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    height: 30,
+    borderRadius: 8,
+    backgroundColor: globalColors.accentLight,
+  },
+  goBackText: {
+    fontWeight: "bold",
+    color: globalColors.main,
+  },
 });
 
 export default headerStyles;

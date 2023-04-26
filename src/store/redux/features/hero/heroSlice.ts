@@ -7,6 +7,7 @@ export const initialHeroState: HeroState = {
     description: "",
     id: "",
     name: "",
+    comicAppearances: 0,
     thumbnail: { extension: "", path: "" },
   },
   url: marvelBaseUrl,
@@ -24,9 +25,14 @@ const heroSlice = createSlice({
       currentHero: action.payload.currentHero,
       url: action.payload.url,
     }),
+    resetHeroState: (): HeroState => ({ ...initialHeroState, url: "" }),
+    loadInitialHeroState: (): HeroState => ({ ...initialHeroState }),
   },
 });
 
 export const heroReducer = heroSlice.reducer;
-export const { loadCurrentHero: loadCurrentHeroActionCreator } =
-  heroSlice.actions;
+export const {
+  loadCurrentHero: loadCurrentHeroActionCreator,
+  resetHeroState: resetHeroStateActionCreator,
+  loadInitialHeroState: loadInitialHeroStateActionCreator,
+} = heroSlice.actions;

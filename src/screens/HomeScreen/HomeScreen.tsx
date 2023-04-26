@@ -9,7 +9,7 @@ import { type MarvelHeroData } from "../../types/types";
 const HomeScreen = (): JSX.Element => {
   const { marvelData: heroes, isFetching, paginate } = useLoadHeroes();
 
-  if ((isFetching && !heroes?.length) || !heroes) {
+  if (isFetching && !heroes?.length) {
     return (
       <View style={globalStyles.container} accessibilityLabel="loading heroes">
         <View style={homeScreenStyles.skeleton}></View>

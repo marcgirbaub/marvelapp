@@ -1,14 +1,24 @@
 import React from "react";
-import renderWithProviders from "../../utils/renderWithProviders";
 import Header from "./Header";
-import { screen } from "@testing-library/react-native";
+import { render, screen } from "@testing-library/react-native";
+import { Provider } from "react-redux";
+import { store } from "../../store/redux/store";
+
+jest.mock("@react-navigation/native", () => ({
+  useRoute: jest.fn().mockReturnValue("home"),
+  useNavigation: jest.fn(),
+}));
 
 describe("Given a Header component", () => {
   describe("When rendered", () => {
     test("Then it should show a title with the text 'MARVEL'", () => {
       const titleText = "MARVEL";
 
-      renderWithProviders(<Header />);
+      render(
+        <Provider store={store}>
+          <Header />
+        </Provider>,
+      );
 
       const title = screen.getByText(titleText);
 
