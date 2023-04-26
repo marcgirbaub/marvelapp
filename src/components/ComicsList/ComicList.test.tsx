@@ -1,13 +1,26 @@
 import React from "react";
-import { mockListOfComics } from "../../mocks/comicsMocks";
+import { screen } from "@testing-library/react-native";
 import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
 import renderWithProviders from "../../utils/renderWithProviders";
 import ComicList from "./ComicsList";
-import { screen } from "@testing-library/react-native";
+import { getMockComic } from "../../mocks/comicsMocks";
 
 const mockUseLoadHeroes = useLoadHeroes as jest.Mock;
 
 jest.mock("../../hooks/useLoadHeroes/useLoadHeroes");
+
+const firstMockedComic = getMockComic(
+  "The Avengers Infinity War",
+  12345,
+  "avengerscomic",
+);
+const secondMockedComic = getMockComic(
+  "Deadpool (1997)",
+  54321,
+  "deadpoolcomic",
+);
+
+const mockListOfComics = [firstMockedComic, secondMockedComic];
 
 describe("Given a ComicList component", () => {
   describe("When rendered", () => {

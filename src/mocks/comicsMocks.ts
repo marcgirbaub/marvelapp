@@ -1,9 +1,13 @@
-import { type MarvelComicData, type MarvelComic } from "../types/types";
+import { type MarvelComic } from "../types/types";
 
-export const avengersComicMock: MarvelComic = {
-  id: 12345,
+export const getMockComic = (
+  title: string,
+  id: number,
+  path: string,
+): MarvelComic => ({
+  id,
   digitalId: 0,
-  title: "Avengers: The Initiative",
+  title,
   issueNumber: 0,
   variantDescription: ".",
   description: ".",
@@ -28,7 +32,7 @@ export const avengersComicMock: MarvelComic = {
   dates: [],
   prices: [],
   thumbnail: {
-    path: "avengegerscomic",
+    path,
     extension: "jpg",
   },
   images: [],
@@ -56,67 +60,4 @@ export const avengersComicMock: MarvelComic = {
     items: [],
     returned: 0,
   },
-};
-
-export const deadpoolComicMock: MarvelComic = {
-  id: 54321,
-  digitalId: 0,
-  title: "Deadpool (1997)",
-  issueNumber: 0,
-  variantDescription: "",
-  description: "",
-  modified: "",
-  isbn: "",
-  upc: "",
-  diamondCode: "",
-  ean: "",
-  issn: "",
-  format: "",
-  pageCount: 0,
-  textObjects: [],
-  resourceURI: "",
-  urls: [],
-  series: {
-    resourceURI: "",
-    name: "",
-  },
-  variants: [],
-  collections: [],
-  collectedIssues: [],
-  dates: [],
-  prices: [],
-  thumbnail: {
-    path: "deadpoolcomic",
-    extension: "jpg",
-  },
-  images: [],
-  creators: {
-    available: 0,
-    collectionURI: "",
-    items: [],
-    returned: 0,
-  },
-  characters: {
-    available: 0,
-    collectionURI: "",
-    items: [],
-    returned: 0,
-  },
-  stories: {
-    available: 0,
-    collectionURI: "",
-    items: [],
-    returned: 0,
-  },
-  events: {
-    available: 0,
-    collectionURI: "",
-    items: [],
-    returned: 0,
-  },
-};
-
-export const mockListOfComics: MarvelComicData = [
-  avengersComicMock,
-  deadpoolComicMock,
-];
+});
