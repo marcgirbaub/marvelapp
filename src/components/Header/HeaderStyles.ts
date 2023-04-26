@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { globalColors } from "../../styles/colors";
+import globalStyles from "../../styles/globalStyles";
 
 const headerStyles = StyleSheet.create({
   container: {
@@ -27,6 +28,21 @@ const headerStyles = StyleSheet.create({
   },
   logoutText: {
     fontWeight: "bold",
+  },
+  goBack: {
+    position: "absolute",
+    left: 20,
+    top: "40%",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
+    height: 30,
+    borderRadius: 8,
+    backgroundColor: globalColors.accentLight,
+  },
+  goBackText: {
+    fontWeight: "bold",
+    color: globalColors.main,
   },
 });
 

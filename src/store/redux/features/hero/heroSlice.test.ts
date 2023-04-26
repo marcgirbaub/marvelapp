@@ -15,6 +15,7 @@ describe("Given a heroReducer reducer", () => {
         description: "Spiderman moves like spiders",
         id: "1234",
         name: "Spiderman",
+        comicAppearances: 4,
         thumbnail: { extension: "jpg", path: "spiderman" },
       };
 

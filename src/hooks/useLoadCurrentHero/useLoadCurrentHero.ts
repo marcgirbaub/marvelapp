@@ -10,12 +10,7 @@ const useLoadCurrentHero = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<NavigationProps>();
 
-  const loadCurrentHero = (
-    selectedHero: HeroStructure,
-    resetPage: () => void,
-  ) => {
-    resetPage();
-
+  const loadCurrentHero = (selectedHero: HeroStructure) => {
     navigation.navigate(Routes.detail);
 
     const selectedHeroComicsUrl = `${marvelBaseUrl}/${selectedHero.id}/${comicsEndpoint}`;
