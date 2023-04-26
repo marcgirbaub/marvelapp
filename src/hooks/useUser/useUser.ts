@@ -51,7 +51,7 @@ const useUser = (): UseUserStructure => {
           resolve(userToLogin);
           navigation.navigate(Routes.home);
         } else {
-          reject(new Error("Wrong Credentials"));
+          reject(new Error("Wrong credentials"));
         }
       }, 2000);
     });

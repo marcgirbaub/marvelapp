@@ -18,6 +18,13 @@ module.exports = {
       files: ["*.ts", "*.tsx"],
     },
     {
+      files: ["src/hooks/useUser/useUser.test.ts"],
+      rules: {
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+      },
+    },
+    {
       files: ["src/store/contexts/CachedRequestsProvider.tsx"],
       rules: {
         "@typescript-eslint/no-floating-promises": "off",
