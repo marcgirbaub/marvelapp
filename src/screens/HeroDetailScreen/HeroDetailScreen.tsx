@@ -20,6 +20,7 @@ const HeroDetailScreen = (): JSX.Element => {
           source={{ uri: `${thumbnail.path}.${thumbnail.extension}` }}
           resizeMode="cover"
           style={heroDetailScreenStyles.image}
+          accessibilityLabel={`${name} image`}
         />
       </View>
       <Text style={heroDetailScreenStyles.heroName}>{name}</Text>
