@@ -35,7 +35,6 @@ export type ApiRequestContextState<T> =
 
 export interface IActions {
   paginate(): void;
-  resetPage(): void;
 }
 
 const initialState = {
@@ -44,7 +43,4 @@ const initialState = {
 
 export const ApiRequestContext = createContext<
   [ApiRequestContextState<MarvelData>, IActions]
->([
-  initialState as ContextStateUninitialized,
-  { paginate: () => undefined, resetPage: () => undefined },
-]);
+>([initialState as ContextStateUninitialized, { paginate: () => undefined }]);

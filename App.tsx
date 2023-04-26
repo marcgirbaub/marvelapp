@@ -1,11 +1,14 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./src/store/redux/store";
-import ProviderWrapper from "./src/components/ProviderWrapper/ProviderWrapper";
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigator from "./src/navigation/StackNavigator/StackNavigator";
 
 const App = (): JSX.Element => (
   <Provider store={store}>
-    <ProviderWrapper />
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   </Provider>
 );
 

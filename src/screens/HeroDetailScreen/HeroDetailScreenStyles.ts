@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { globalColors } from "../../styles/colors";
 
 const heroDetailScreenStyles = StyleSheet.create({
-  imageContainer: { width: "100%", height: 330, marginBottom: 10 },
+  imageContainer: { width: "100%", height: 340, marginBottom: 10 },
   image: { width: "100%", height: "100%", borderRadius: 20 },
   heroName: { fontWeight: "bold", fontSize: 40, marginBottom: 10 },
   description: { fontSize: 18, letterSpacing: 0.75, marginBottom: 20 },
@@ -27,6 +27,7 @@ const heroDetailScreenStyles = StyleSheet.create({
   },
   gap: { width: 20 },
   comicContainer: { width: 210 },
+  comicsSection: { alignItems: "center", justifyContent: "center" },
   comicImage: { width: "100%", height: 319, marginBottom: 8 },
   comicTitle: { fontSize: 16, textAlign: "center" },
   comicsList: { paddingBottom: 20 },

@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { create, type ApisauceInstance } from "apisauce";
 import { type MarvelData, type MarvelResponse } from "../../types/types";
 import {
@@ -6,6 +12,7 @@ import {
   marvelBaseUrl,
   marvelHash,
   marvelTs,
+  resultsPerPage,
 } from "../../constants/apiConstants";
 import {
   ApiRequestContext,
@@ -134,6 +141,7 @@ export function CachedRequestsProvider({
   const [page, setPage] = useState(0);
 
   const user = useAppSelector((state) => state.user);
+  const { url: stateUrl, currentHero } = useAppSelector((state) => state.hero);
 
   useEffect(() => {
     if (!user.isLogged) {
@@ -165,7 +173,7 @@ export function CachedRequestsProvider({
   }, [page, url]);
 
   useEffect(() => {
-    if (state.isFetching || !state.url) {
+    if (state.isFetching || !state.url || !stateUrl) {
       return;
     }
 
@@ -183,6 +191,18 @@ export function CachedRequestsProvider({
 
     marvelProxy[getNavigatableUrl()]
       .then((value) => {
+        if (url.includes("comics")) {
+          const previousData = page === 0 ? [] : state.data;
+
+          setState({
+            ...state,
+            isFetching: false,
+            data: [...(previousData ?? []), ...value.data.results],
+          } as ContextStateFetched<MarvelData>);
+
+          return;
+        }
+
         const previousData = page === 0 ? [] : state.data;
 
         setState({
@@ -196,20 +216,29 @@ export function CachedRequestsProvider({
       });
   }, [page, url]);
 
-  return (
-    <ApiRequestContext.Provider
-      value={[
-        state,
-        {
-          paginate() {
+  const store = useMemo(
+    () => [
+      state,
+      {
+        paginate() {
+          if (
+            currentHero.name &&
+            currentHero.comicAppearances > (page + 1) * resultsPerPage
+          ) {
             setPage(page + 1);
-          },
-          resetPage() {
-            setPage(0);
-          },
+          }
+
+          if (!currentHero.name) {
+            setPage(page + 1);
+          }
         },
-      ]}
-    >
+      },
+    ],
+    [state, page, url],
+  ) as [ApiRequestContextState<MarvelData>, IActions];
+
+  return (
+    <ApiRequestContext.Provider value={store}>
       {children}
     </ApiRequestContext.Provider>
   );

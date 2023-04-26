@@ -6,12 +6,10 @@ import useLoadCurrentHero from "../../hooks/useLoadCurrentHero/useLoadCurrentHer
 
 interface HeroCardProps {
   hero: MarvelHero;
-  resetPage: () => void;
 }
 
 const HeroCard = ({
   hero: { name, thumbnail, comics, description, id },
-  resetPage,
 }: HeroCardProps): JSX.Element => {
   const { loadCurrentHero } = useLoadCurrentHero();
 
@@ -20,10 +18,13 @@ const HeroCard = ({
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={() => {
-          loadCurrentHero(
-            { description, id: id.toString(), name, thumbnail },
-            resetPage,
-          );
+          loadCurrentHero({
+            description,
+            id: id.toString(),
+            name,
+            thumbnail,
+            comicAppearances: comics.available,
+          });
         }}
       >
         <View style={heroCardStyles.imageContainer}>

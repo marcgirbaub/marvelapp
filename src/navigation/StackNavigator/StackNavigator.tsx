@@ -1,18 +1,18 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaView } from "react-native";
 import LoginScreen from "../../screens/LoginScreen/LoginScreen";
-import HomeScreen from "../../screens/HomeScreen/HomeScreen";
 import { type RootStackParamList } from "../../types/navigation.types";
 import Routes from "../routes";
 import Header from "../../components/Header/Header";
-import { SafeAreaView } from "react-native";
 import globalStyles from "../../styles/globalStyles";
-import HeroDetailScreen from "../../screens/HeroDetailScreen/HeroDetailScreen";
+import DetailScreenWrapper from "../wrappers/DetailScreenWrapper";
+import HomeScreenWrapper from "../wrappers/HomeScreenWrapper";
 
 const StackNavigator = (): JSX.Element => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
-  const renderHeader = () => <Header />;
+  const renderHeader = (): JSX.Element => <Header />;
 
   return (
     <SafeAreaView style={globalStyles.safeArea}>
@@ -26,12 +26,12 @@ const StackNavigator = (): JSX.Element => {
           name={Routes.login}
         />
         <Stack.Screen
-          component={HomeScreen}
+          component={HomeScreenWrapper}
           name={Routes.home}
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          component={HeroDetailScreen}
+          component={DetailScreenWrapper}
           name={Routes.detail}
           options={{ headerShown: true }}
         />

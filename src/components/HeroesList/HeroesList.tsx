@@ -15,24 +15,22 @@ interface HeroesListProps {
   onEndReachedAction: () => void;
   heroesList: MarvelHeroData;
   isFetching: boolean;
-  resetPage: () => void;
 }
+
+const renderSeparator = () => <View style={heroesListStyles.gap}></View>;
 
 const HeroesList = ({
   heroesList,
   onEndReachedAction,
   isFetching,
-  resetPage,
 }: HeroesListProps): JSX.Element => {
-  const renderSeparator = () => <View style={heroesListStyles.gap}></View>;
-
   const heroesListRef = useRef<FlatList<MarvelHero>>(null);
 
   const scrollToTop = () => {
     heroesListRef.current!.scrollToOffset({ animated: true, offset: 0 });
   };
 
-  if (!heroesList.length) {
+  if (!heroesList?.length) {
     return (
       <Text style={heroesListStyles.errorText}>
         There was an error loading the heroes
@@ -51,9 +49,7 @@ const HeroesList = ({
       </TouchableOpacity>
       <FlatList
         data={heroesList}
-        renderItem={({ item }) => (
-          <HeroCard hero={item} resetPage={resetPage} />
-        )}
+        renderItem={({ item }) => <HeroCard hero={item} />}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
         onEndReached={onEndReachedAction}
