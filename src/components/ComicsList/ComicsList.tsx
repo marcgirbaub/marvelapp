@@ -1,6 +1,6 @@
 import React from "react";
 import useLoadData from "../../hooks/useLoadData/useLoadData";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { type MarvelComicData } from "../../types/types";
 import Comic from "../Comic/Comic";
 import { globalColors } from "../../styles/colors";
@@ -12,6 +12,14 @@ const ComicList = (): JSX.Element => {
   const renderSeparator = (): JSX.Element => (
     <View style={comicListStyles.gap}></View>
   );
+
+  if (!isFetching && !comics?.length) {
+    return (
+      <Text style={comicListStyles.error}>
+        There was an error loading the comics
+      </Text>
+    );
+  }
 
   if (isFetching && !comics?.length) {
     return (
