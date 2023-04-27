@@ -8,9 +8,14 @@ import Header from "../../components/Header/Header";
 import globalStyles from "../../styles/globalStyles";
 import DetailScreenWrapper from "../wrappers/DetailScreenWrapper";
 import HomeScreenWrapper from "../wrappers/HomeScreenWrapper";
+import useStorage from "../../hooks/useStorage/useStorage";
 
 const StackNavigator = (): JSX.Element => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
+
+  const { getFromStorage } = useStorage();
+
+  getFromStorage();
 
   const renderHeader = (): JSX.Element => <Header />;
 

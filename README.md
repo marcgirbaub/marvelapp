@@ -45,14 +45,14 @@ Let the Metro Bundler run in its own terminal and open a new one inside the proj
 npm run ios // yarn run ios
 ```
 
-The default simulator device is "iPhone 11". If you wish to run the app on another device, use the **`--simulator`** flag, followed by the device name as a string. For example: **`npm run ios --simulator="iPhone 14"`**.
+The default simulator device is "iPhone 11". If you wish to run the app on another device, use the **`--simulator`** flag, followed by the device name as a string. For example: **`npx react-native run-ios --simulator="iPhone 14"`**.
 
 ## **Running tests**
 
 To run the test suite, use the following command:
 
 ```
-npm test
+npm test // npm run test:coverage
 ```
 
 ## **Additional information and comments**

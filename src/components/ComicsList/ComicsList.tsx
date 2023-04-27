@@ -40,7 +40,7 @@ const ComicList = (): JSX.Element => {
         ItemSeparatorComponent={renderSeparator}
         contentContainerStyle={comicListStyles.comicsList}
         keyExtractor={(item, index) => `${item.id}-${index}`}
-        onEndReachedThreshold={0.7}
+        onEndReachedThreshold={0.5}
         horizontal={true}
         onEndReached={() => {
           paginate();
