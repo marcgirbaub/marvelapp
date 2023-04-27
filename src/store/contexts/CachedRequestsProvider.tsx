@@ -194,6 +194,11 @@ export function CachedRequestsProvider({
       })
       .catch((error) => {
         Alert.alert("Error loading the data");
+
+        setState({
+          ...state,
+          isFetching: false,
+        } as ContextStateFetched<MarvelData>);
       });
   }, [page, url]);
 
