@@ -31,7 +31,11 @@ type Props = {
 };
 
 type ProxyHandler<T, P extends string> = {
-  get?(target: T, p: P, receiver: any): any;
+  get?(
+    target: { results: { [key in string]?: T }; apiInstance: ApisauceInstance },
+    p: P,
+    receiver: any,
+  ): any;
   set?(
     target: { results: { [key in P]?: T } },
     p: P,

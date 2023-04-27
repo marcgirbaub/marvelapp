@@ -62,7 +62,7 @@ const useUser = (): UseUserStructure => {
 
     dispatch(resetHeroStateActionCreator());
 
-    await removeFromStorage();
+    removeFromStorage();
     navigation.navigate(Routes.login);
   };
 
