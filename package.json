@@ -26,8 +26,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.0.2",
     "react-native-screens": "^3.18.2",
-    "react-redux": "^8.0.5",
-    "uninstall": "^0.0.0"
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -61,6 +60,7 @@
     "setupFiles": [
       "./jest.setup.ts"
     ],
+    "testEnvironment": "jsdom",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|react-navigation|@react-navigation/.*))"
     ],

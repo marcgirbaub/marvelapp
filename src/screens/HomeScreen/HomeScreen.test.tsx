@@ -4,6 +4,7 @@ import { mockListOfHeroes } from "../../mocks/heroesMocks";
 import renderWithProviders from "../../utils/renderWithProviders";
 import HomeScreen from "./HomeScreen";
 import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
+import { CachedRequestsProvider } from "../../store/contexts/CachedRequestsProvider";
 
 const mockUseLoadHeroes = useLoadHeroes as jest.Mock;
 
@@ -33,6 +34,8 @@ describe("Given a HomeScreen component", () => {
     describe("And the initial data is being fetched", () => {
       test("Then it should show a loading skeleton with accessibility label `loading heroes`", () => {
         const accessibilityLabel = "loading heroes";
+        const resultsPerPage = 10;
+        const url = "https://marvel.com";
 
         mockUseLoadHeroes.mockReturnValue({
           isFetching: true,
@@ -40,7 +43,11 @@ describe("Given a HomeScreen component", () => {
           paginate: jest.fn(),
         });
 
-        renderWithProviders(<HomeScreen />);
+        renderWithProviders(
+          <CachedRequestsProvider maxResultsPerPage={resultsPerPage} url={url}>
+            <HomeScreen />
+          </CachedRequestsProvider>,
+        );
 
         const loadingSkeleton = screen.getByLabelText(accessibilityLabel);
 
