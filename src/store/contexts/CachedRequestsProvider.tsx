@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { create, type ApisauceInstance } from "apisauce";
+import { Alert } from "react-native";
 import { type MarvelData, type MarvelResponse } from "../../types/types";
 import {
   marvelApikey,
@@ -22,7 +23,6 @@ import {
   type IActions,
 } from "./ApiRequestContext";
 import { useAppSelector } from "../redux/hooks";
-import { Alert } from "react-native";
 
 type Props = {
   url: string;
@@ -204,7 +204,7 @@ export function CachedRequestsProvider({
         } as ContextStateFetched<MarvelData>);
       })
       .catch((error) => {
-        Alert.alert("Error fetching data");
+        Alert.alert("Error loading the data");
       });
   }, [page, url]);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { act, fireEvent, screen } from "@testing-library/react-native";
+import { fireEvent, screen } from "@testing-library/react-native";
 import renderWithProviders from "../../utils/renderWithProviders";
 import LoginForm from "./LoginForm";
 import { type UserCredentials } from "../../hooks/useUser/types";
