@@ -144,7 +144,9 @@ export function CachedRequestsProvider({
 
   const [page, setPage] = useState(0);
 
-  const { url: stateUrl, currentHero } = useAppSelector((state) => state.hero);
+  const { url: globalStateUrl, currentHero } = useAppSelector(
+    (state) => state.hero,
+  );
 
   const getNavigatableUrl = useCallback((): string => {
     const newUrl = new URL(url);
@@ -170,7 +172,9 @@ export function CachedRequestsProvider({
   }, [page, url]);
 
   useEffect(() => {
-    if (state.isFetching || !state.url || !stateUrl) {
+    let isMounted = true;
+
+    if (state.isFetching || !state.url || !globalStateUrl) {
       return;
     }
 
@@ -190,20 +194,28 @@ export function CachedRequestsProvider({
       .then((value) => {
         const previousData = page === 0 ? [] : state.data;
 
-        setState({
-          ...state,
-          isFetching: false,
-          data: [...(previousData ?? []), ...value.data.results],
-        } as ContextStateFetched<MarvelData>);
+        if (isMounted) {
+          setState({
+            ...state,
+            isFetching: false,
+            data: [...(previousData ?? []), ...value.data.results],
+          } as ContextStateFetched<MarvelData>);
+        }
       })
       .catch((error) => {
         Alert.alert("Error loading the data");
 
-        setState({
-          ...state,
-          isFetching: false,
-        } as ContextStateFetched<MarvelData>);
+        if (isMounted) {
+          setState({
+            ...state,
+            isFetching: false,
+          } as ContextStateFetched<MarvelData>);
+        }
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, [page, url]);
 
   const store = useMemo(
