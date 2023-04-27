@@ -1,5 +1,5 @@
 import React from "react";
-import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
+import useLoadData from "../../hooks/useLoadData/useLoadData";
 import { ActivityIndicator, FlatList, View } from "react-native";
 import { type MarvelComicData } from "../../types/types";
 import Comic from "../Comic/Comic";
@@ -7,7 +7,7 @@ import { globalColors } from "../../styles/colors";
 import comicListStyles from "./ComicsListStyles";
 
 const ComicList = (): JSX.Element => {
-  const { isFetching, marvelData: comics, paginate } = useLoadHeroes();
+  const { isFetching, marvelData: comics, paginate } = useLoadData();
 
   const renderSeparator = (): JSX.Element => (
     <View style={comicListStyles.gap}></View>
@@ -31,7 +31,7 @@ const ComicList = (): JSX.Element => {
         data={comics as MarvelComicData}
         ItemSeparatorComponent={renderSeparator}
         contentContainerStyle={comicListStyles.comicsList}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => `${item.id}-${index}`}
         onEndReachedThreshold={0.7}
         horizontal={true}
         onEndReached={() => {
@@ -44,7 +44,7 @@ const ComicList = (): JSX.Element => {
         <ActivityIndicator
           size="large"
           color={globalColors.accent}
-          style={{ position: "absolute", top: -10, right: 10 }}
+          style={comicListStyles.loader}
         />
       )}
     </>

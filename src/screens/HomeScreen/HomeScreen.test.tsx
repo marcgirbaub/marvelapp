@@ -3,12 +3,12 @@ import { screen } from "@testing-library/react-native";
 import { mockListOfHeroes } from "../../mocks/heroesMocks";
 import renderWithProviders from "../../utils/renderWithProviders";
 import HomeScreen from "./HomeScreen";
-import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
+import useLoadData from "../../hooks/useLoadData/useLoadData";
 import { CachedRequestsProvider } from "../../store/contexts/CachedRequestsProvider";
 
-const mockUseLoadHeroes = useLoadHeroes as jest.Mock;
+const mockUseLoadHeroes = useLoadData as jest.Mock;
 
-jest.mock("../../hooks/useLoadHeroes/useLoadHeroes");
+jest.mock("../../hooks/useLoadData/useLoadData");
 
 describe("Given a HomeScreen component", () => {
   describe("When rendered", () => {

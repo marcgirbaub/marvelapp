@@ -1,13 +1,13 @@
 import React from "react";
 import { View } from "react-native";
 import globalStyles from "../../styles/globalStyles";
-import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
+import useLoadData from "../../hooks/useLoadData/useLoadData";
 import HeroesList from "../../components/HeroesList/HeroesList";
 import homeScreenStyles from "./HomeScreenStyles";
 import { type MarvelHeroData } from "../../types/types";
 
 const HomeScreen = (): JSX.Element => {
-  const { marvelData: heroes, isFetching, paginate } = useLoadHeroes();
+  const { marvelData: heroes, isFetching, paginate } = useLoadData();
 
   if (isFetching && !heroes?.length) {
     return (

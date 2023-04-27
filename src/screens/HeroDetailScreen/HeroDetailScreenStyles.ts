@@ -11,6 +11,7 @@ const heroDetailScreenStyles = StyleSheet.create({
     fontStyle: "italic",
     letterSpacing: 0.75,
     marginBottom: 20,
+    alignSelf: "flex-start",
   },
   comicsTitle: {
     fontSize: 24,

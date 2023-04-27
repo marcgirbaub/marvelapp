@@ -1,6 +1,6 @@
 import { useCachedRequests } from "../../store/contexts/CachedRequestsProvider";
 
-const useLoadHeroes = () => {
+const useLoadData = () => {
   const [state, actions] = useCachedRequests();
 
   return {
@@ -10,4 +10,4 @@ const useLoadHeroes = () => {
   };
 };
 
-export default useLoadHeroes;
+export default useLoadData;
