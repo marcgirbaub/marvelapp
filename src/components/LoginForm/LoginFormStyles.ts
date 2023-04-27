@@ -35,6 +35,7 @@ const loginFormStyles = StyleSheet.create({
   errorText: {
     fontSize: 14,
     fontStyle: "italic",
+    color: globalColors.error,
   },
   loginError: {
     fontSize: 20,
@@ -42,6 +43,7 @@ const loginFormStyles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.75,
     fontStyle: "italic",
+    color: globalColors.error,
   },
   feedbackContainer: { marginTop: 40, minHeight: 40, justifyContent: "center" },
 });
