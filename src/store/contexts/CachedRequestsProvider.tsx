@@ -151,14 +151,15 @@ export function CachedRequestsProvider({
       newUrl.searchParams.append(param[0], param[1]);
     });
 
+    const stringedUrl = newUrl.toString();
     let parsedUrl = "";
 
-    if (newUrl.toString().includes("characters/")) {
-      parsedUrl = newUrl.toString().replace("characters/", "characters");
+    if (stringedUrl.includes("characters/")) {
+      parsedUrl = stringedUrl.replace("characters/", "characters");
     }
 
-    if (newUrl.toString().includes("comics/")) {
-      parsedUrl = newUrl.toString().replace("comics/", "comics");
+    if (stringedUrl.includes("comics/")) {
+      parsedUrl = stringedUrl.replace("comics/", "comics");
     }
 
     return parsedUrl;
@@ -183,18 +184,6 @@ export function CachedRequestsProvider({
 
     marvelProxy[getNavigatableUrl()]
       .then((value) => {
-        if (url.includes("comics")) {
-          const previousData = page === 0 ? [] : state.data;
-
-          setState({
-            ...state,
-            isFetching: false,
-            data: [...(previousData ?? []), ...value.data.results],
-          } as ContextStateFetched<MarvelData>);
-
-          return;
-        }
-
         const previousData = page === 0 ? [] : state.data;
 
         setState({

@@ -1,13 +1,13 @@
 import React from "react";
 import { screen } from "@testing-library/react-native";
-import useLoadHeroes from "../../hooks/useLoadHeroes/useLoadHeroes";
+import useLoadData from "../../hooks/useLoadData/useLoadData";
 import renderWithProviders from "../../utils/renderWithProviders";
 import ComicList from "./ComicsList";
 import { getMockComic } from "../../mocks/comicsMocks";
 
-const mockUseLoadHeroes = useLoadHeroes as jest.Mock;
+const mockUseLoadHeroes = useLoadData as jest.Mock;
 
-jest.mock("../../hooks/useLoadHeroes/useLoadHeroes");
+jest.mock("../../hooks/useLoadData/useLoadData");
 
 const firstMockedComic = getMockComic(
   "The Avengers Infinity War",
