@@ -49,7 +49,9 @@ const HeroesList = ({
       </TouchableOpacity>
       <FlatList
         data={heroesList}
-        renderItem={({ item }) => <HeroCard hero={item} />}
+        renderItem={({ item }) => (
+          <HeroCard hero={item} isDetailDisabled={isFetching} />
+        )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
         onEndReached={onEndReachedAction}
@@ -57,6 +59,8 @@ const HeroesList = ({
         ItemSeparatorComponent={renderSeparator}
         contentContainerStyle={heroesListStyles.list}
         ref={heroesListRef}
+        bounces={false}
+        scrollEnabled={!isFetching}
       />
       {isFetching && heroesList.length ? (
         <ActivityIndicator

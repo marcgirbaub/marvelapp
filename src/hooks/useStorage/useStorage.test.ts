@@ -3,7 +3,6 @@ import { store } from "../../store/redux/store";
 import useStorage from "./useStorage";
 import Wrapper from "../../utils/Wrapper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { loginUserActionCreator } from "../../store/redux/features/user/userSlice";
 
 jest.mock("@react-native-async-storage/async-storage", () => ({
   getItem: jest.fn(),

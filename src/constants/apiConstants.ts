@@ -1,6 +1,7 @@
 export const marvelBaseUrl = "https://gateway.marvel.com/v1/public/characters";
 
 export const comicsEndpoint = "comics";
+export const charactersEndpoint = "characters";
 
 export const marvelApikey = "a210315da234565f0fe376e374490fe2";
 export const marvelTs = "1";

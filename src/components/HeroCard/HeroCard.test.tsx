@@ -6,7 +6,11 @@ import { mockHero3D } from "../../mocks/heroesMocks";
 
 describe("Given a HeroCard component", () => {
   describe("When it receives a Hero with the name '3-D Man' that has 12 comic appearances", () => {
-    beforeEach(() => renderWithProviders(<HeroCard hero={mockHero3D} />));
+    beforeEach(() =>
+      renderWithProviders(
+        <HeroCard isDetailDisabled={false} hero={mockHero3D} />,
+      ),
+    );
 
     test("Then it should show the name on the screen", () => {
       const heroName = mockHero3D.name;
