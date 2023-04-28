@@ -9,6 +9,8 @@ import { create, type ApisauceInstance } from "apisauce";
 import { Alert } from "react-native";
 import { type MarvelData, type MarvelResponse } from "../../types/types";
 import {
+  charactersEndpoint,
+  comicsEndpoint,
   marvelApikey,
   marvelBaseUrl,
   marvelHash,
@@ -161,11 +163,11 @@ export function CachedRequestsProvider({
     let parsedUrl = "";
 
     if (stringedUrl.includes("characters/")) {
-      parsedUrl = stringedUrl.replace("characters/", "characters");
+      parsedUrl = stringedUrl.replace("characters/", charactersEndpoint);
     }
 
     if (stringedUrl.includes("comics/")) {
-      parsedUrl = stringedUrl.replace("comics/", "comics");
+      parsedUrl = stringedUrl.replace("comics/", comicsEndpoint);
     }
 
     return parsedUrl;
@@ -194,7 +196,19 @@ export function CachedRequestsProvider({
       .then((value) => {
         const previousData = page === 0 ? [] : state.data;
 
-        if (isMounted) {
+        const isUrlComics = url.includes(comicsEndpoint);
+
+        if (isUrlComics && isMounted) {
+          setState({
+            ...state,
+            isFetching: false,
+            data: [...(previousData ?? []), ...value.data.results],
+          } as ContextStateFetched<MarvelData>);
+
+          return;
+        }
+
+        if (!isUrlComics) {
           setState({
             ...state,
             isFetching: false,
@@ -205,7 +219,16 @@ export function CachedRequestsProvider({
       .catch((error) => {
         Alert.alert("Error loading the data");
 
-        if (isMounted) {
+        if (url.includes(comicsEndpoint) && isMounted) {
+          setState({
+            ...state,
+            isFetching: false,
+          } as ContextStateFetched<MarvelData>);
+
+          return;
+        }
+
+        if (!url.includes(comicsEndpoint)) {
           setState({
             ...state,
             isFetching: false,
@@ -227,11 +250,11 @@ export function CachedRequestsProvider({
             currentHero.name &&
             currentHero.comicAppearances > (page + 1) * resultsPerPage
           ) {
-            setPage(page + 1);
+            setPage((page) => page + 1);
           }
 
           if (!currentHero.name) {
-            setPage(page + 1);
+            setPage((page) => page + 1);
           }
         },
       },

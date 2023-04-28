@@ -33,7 +33,7 @@ const StackNavigator = (): JSX.Element => {
         <Stack.Screen
           component={HomeScreenWrapper}
           name={Routes.home}
-          options={{ headerShown: true }}
+          options={{ headerShown: true, gestureEnabled: false }}
         />
         <Stack.Screen
           component={DetailScreenWrapper}

@@ -24,7 +24,9 @@ const HomeScreen = (): JSX.Element => {
       <HeroesList
         heroesList={heroes as MarvelHeroData}
         onEndReachedAction={() => {
-          paginate();
+          if (!isFetching) {
+            paginate();
+          }
         }}
         isFetching={isFetching}
       />
