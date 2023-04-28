@@ -18,10 +18,15 @@ module.exports = {
       files: ["*.ts", "*.tsx"],
     },
     {
-      files: ["src/hooks/useUser/useUser.test.ts"],
+      files: [
+        "src/hooks/useUser/useUser.test.ts",
+        "src/hooks/useStorage/useStorage.test.ts",
+      ],
       rules: {
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/await-thenable": "off",
+        "@typescript-eslint/no-confusing-void-expression": "off",
       },
     },
     {
