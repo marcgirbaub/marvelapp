@@ -38,7 +38,7 @@ const StackNavigator = (): JSX.Element => {
         <Stack.Screen
           component={DetailScreenWrapper}
           name={Routes.detail}
-          options={{ headerShown: true }}
+          options={{ headerShown: true, gestureEnabled: false }}
         />
       </Stack.Navigator>
       <StatusBar barStyle={"dark-content"} />
