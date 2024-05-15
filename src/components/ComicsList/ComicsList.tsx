@@ -21,6 +21,8 @@ const ComicList = (): JSX.Element => {
     );
   }
 
+  console.log('solde')
+
   if (isFetching && !comics?.length) {
     return (
       <View
